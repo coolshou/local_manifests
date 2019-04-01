@@ -1,6 +1,12 @@
 ## How to compile Android 7.1 for Pine A64
 
 1. Checkout http://source.android.com/source/downloading.html
+  ```
+  mkdir ~/bin
+  exportPATH=~/bin:$PATH
+  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+  chmod a+x ~/bin/repo
+  ```
 1. Create a new directory:
   ```
   mkdir android
@@ -10,7 +16,7 @@
 2. Initialize manifests:
   ```
   repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.2_r11 --depth=1
-  git clone https://github.com/ayufan-pine64/local_manifests -b nougat-7.1 .repo/local_manifests
+  git clone https://github.com/coolshou/local_manifests -b nougat-7.1 .repo/local_manifests
   ```
 
 3. Checkout sources:
