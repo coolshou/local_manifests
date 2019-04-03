@@ -5,6 +5,8 @@
   <remote name="cm" fetch="https://github.com/CyanogenMod" />
   <remote name="opengapps" fetch="https://github.com/opengapps/"  />
   <remote name="coolshou" fetch="https://github.com/coolshou/"  />
+  <remote name="nezor" fetch="https://gitlab.nezorfla.me/opengapps/"  />
+
 
   <remove-project name="platform/build" />
   <remove-project name="platform/external/minijail" />
@@ -48,10 +50,13 @@
 
   <!-- Google Apps support -->
   <project path="vendor/opengapps/atv-build" name="opengapps_atv_build" revision="nougat" remote="ayufan" />
+
   <project path="vendor/opengapps/build" name="aosp_build" revision="master" remote="opengapps" />
-  <project path="vendor/opengapps/sources/opengapps" name="opengapps" clone-depth="1" revision="master" remote="opengapps" />
-  <project path="vendor/opengapps/sources/arm" name="arm" clone-depth="1" revision="master" remote="opengapps" />
-  <project path="vendor/opengapps/sources/arm64" name="arm64" clone-depth="1" revision="master" remote="opengapps" />
+  <project path="vendor/opengapps/sources/all" name="all" clone-depth="1" revision="master" remote="nezor" />
+  <!-- arm64 depends on arm -->
+  <project path="vendor/opengapps/sources/arm" name="arm" clone-depth="1" revision="master" remote="nezor" />
+  <project path="vendor/opengapps/sources/arm64" name="arm64" clone-depth="1" revision="master" remote="nezor" />
+
 
   <!-- SuperSU -->
   <project path="vendor/supersu" name="vendor-supersu" clone-depth="1" revision="nougat" remote="ayufan" />
@@ -63,7 +68,8 @@
   <project path="external/ethtool" name="android_external_ethtool" remote="ayufan" revision="s805_4.4.2_master" groups="pdk" />
 
   <!--rtl8812au-->
-  <project path="linux/kernel-tulip/drivers/net/wireless/rtl8812au" name="rtl8812au" remote="coolshou" revision="pine64" />
+  <project path="linux/kernel-tulip/drivers/net/wireless/rtl8812au.git" name="rtl8812au" remote="coolshou" revision="pine64" />
+
   <!--remove not needed devices-->
   <remove-project name="device/asus/fugu" />
   <remove-project name="device/asus/fugu-kernel" />
