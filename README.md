@@ -32,6 +32,7 @@
 
 5.  reduce jack server number to avoid out of memory issue (change setting need to restart jack server)
   ```
+    > export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m"
     > jack-admin kill-server
     # edit ~/.jack-server/config.properties
     # jack.server.max-service=1
@@ -46,17 +47,18 @@
     #edit /frameworks/base/services/tests/servicestests/src/com/android/server/ConnectivityServiceTest.java:623:
     #          Duplicate nested type WrappedAvoidBadWifiTracker
   ```
-7. Setup device for compile:
+
+7. avoid flex error
+  ```
+export LC_ALL=C
+  ```
+  
+8. Setup device for compile:
   ```
   source build/envsetup.sh
   # tulip_chihpd-eng: use for normal Android build with Launcher
   # tulip_chiphd_atv-eng: use for Android TV build with Leanback Launcher
   lunch tulip_chiphd-eng
-  ```
-
-8. avoid flex error
-  ```
-export LC_ALL=C
   ```
 
 9. Compile sources:
