@@ -30,16 +30,20 @@
   repo sync -c
   ```
 
-5.  reduce jack server number to avoid out of memory issue
+5.  reduce jack server number to avoid out of memory issue (change setting need to restart jack server)
   ```
+    > jack-admin kill-server
     # edit ~/.jack-server/config.properties
     # jack.server.max-service=1
+    > jack-admin start-server
   ```
+5.1 multi user jack server (option)
+    # edit ~/.jack-settings & ~/.jack-server/config.properties
+    # service port & admin port to same value
 
 6. Bug fix: Remove duplicated WrappedAvoidBadWifiTracker class
   ```
-    #edit /frameworks/base/services/tests/servicestests/src/
-    #          com/android/server/ConnectivityServiceTest.java:623:
+    #edit /frameworks/base/services/tests/servicestests/src/com/android/server/ConnectivityServiceTest.java:623:
     #          Duplicate nested type WrappedAvoidBadWifiTracker
   ```
 7. Setup device for compile:
@@ -65,16 +69,25 @@ export LC_ALL=C
   sdcard_image pine64_android_7_1.img.gz
   ```
 
-11. Write image to SD card with Rasplex Installer (this is multiplatform tool):
-  https://github.com/RasPlex/rasplex-installer/releases or use `DD`.
+11. Write image to SD card with etcher.
 
 ## disk format
   ```
- /dev/block/mmcblk0p1            43008   143359   100352   49M  6 FAT16                  /bootloader
+ /dev/block/mmcblk0p1            43008   143359   100352   49M  6 FAT16                  /bootloader& kernel, ramdisk, recovery
  /dev/block/mmcblk0p2           143360  4337663  4194304    2G 83 Linux              /system
  /dev/block/mmcblk0p3         4337664  5910527  1572864  768M 83 Linux           /cache
  /dev/block/mmcblk0p4         5910528 62333951 56423424 26.9G 83 Linux           /data
   ```
+
+## UART
+
+The successful connection is made on the EXP connector:
+
+[FTDI TTL-232R-RPi](http://www.digikey.com/product-search/en?keywords=TTL-232R-RPi) 3-wire cable
+
+- Connect the Black GND wire to Pin 6 or 9 of the EXP connector.
+- Connect the Yellow RX wire to Pin 7 of the EXP connector.
+- Connect the Orange TX wire to Pin 8 of the EXP connector.
 
 ## Changes
 

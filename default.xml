@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote name="ayufan" fetch="https://github.com/ayufan-pine64" />
-  <remote name="omnirom" fetch="https://github.com/omnirom" />
   <remote name="cm" fetch="https://github.com/CyanogenMod" />
-  <remote name="opengapps" fetch="https://github.com/opengapps/"  />
+  <remote name="omnirom" fetch="https://github.com/omnirom"/>
+  <remote name="opengapps" fetch="https://github.com/opengapps/" />
   <remote name="coolshou" fetch="https://github.com/coolshou/"  />
   <remote name="nezor" fetch="https://gitlab.nezorfla.me/opengapps/"  />
 
@@ -27,7 +27,11 @@
   <project path="hardware/realtek" name="hardware-realtek" remote="ayufan" revision="nougat" groups="pdk" />
   <project path="vendor/ayufan-pine64/pine64-common" name="device-pine64-common" remote="ayufan" revision="master" groups="pdk" />
   <project path="vendor/ayufan-pine64/boot-tools" name="boot-tools" remote="ayufan" revision="master" groups="pdk" />
-  <project path="vendor/ayufan-pine64/apps" name="vendor-ayufan-apps" remote="ayufan" revision="master" groups="pdk" />
+  <!-- <project path="vendor/ayufan-pine64/apps" name="vendor-ayufan-apps" remote="ayufan" revision="master" groups="pdk" />-->
+  <!-- bootloader-->
+  <project path="vendor/bootloader/atf" name="arm-trusted-firmware" remote="coolshou" revision="master" groups="pdk" />
+  <project path="vendor/bootloader/u-boot" name="u-boot" remote="coolshou" revision="master" groups="pdk" />
+  <project path="vendor/bootloader/pine64-tool" name="pine64" remote="coolshou" revision="master" groups="pdk" />
 
   <!-- TWRP recovery -->
   <project path="external/busybox" name="android_external_busybox" remote="ayufan" revision="nougat" groups="pdk" />
@@ -57,6 +61,8 @@
   <project path="vendor/opengapps/sources/arm" name="arm" clone-depth="1" revision="master" remote="nezor" />
   <project path="vendor/opengapps/sources/arm64" name="arm64" clone-depth="1" revision="master" remote="nezor" />
 
+  <!-- apps -->
+  <project path="vendor/apps" name="vendor-apps" remote="coolshou" revision="master" groups="pdk" />
 
   <!-- SuperSU -->
   <project path="vendor/supersu" name="vendor-supersu" clone-depth="1" revision="nougat" remote="ayufan" />
@@ -68,8 +74,9 @@
   <project path="external/ethtool" name="android_external_ethtool" remote="ayufan" revision="s805_4.4.2_master" groups="pdk" />
 
   <!--rtl8812au-->
-  <project path="linux/kernel-tulip/drivers/net/wireless/rtl8812au.git" name="rtl8812au" remote="coolshou" revision="pine64" />
-
+  <project path="linux/kernel-tulip/drivers/net/wireless/rtl8812au.git" name="rtl8812au" remote="coolshou" revision="pine64" >
+    <!-- <linkfile src="driver" dest="../rtl8812au"/> -->
+  </project>
   <!--remove not needed devices-->
   <remove-project name="device/asus/fugu" />
   <remove-project name="device/asus/fugu-kernel" />
@@ -84,5 +91,17 @@
   <remove-project name="device/linaro/hikey-kernel" />
   <remove-project name="device/moto/shamu" />
   <remove-project name="device/moto/shamu-kernel" />
-
+  <remove-project name="device/sample" />
+  <remove-project name="device/google/dragon" />
+  <remove-project name="device/google/dragon-kernel" />
+  <remove-project name="device/google/marlin" />
+  <remove-project name="device/google/marlin-kernel" />
+  <remove-project name="device/generic/mini-emulator-mips" />
+  <remove-project name="device/generic/mini-emulator-mips64" />
+  <remove-project name="device/generic/mini-emulator-x86" />
+  <remove-project name="device/generic/mini-emulator-x86_64" />
+  <remove-project name="device/generic/mips" />
+  <remove-project name="device/generic/mips64" />
+  <remove-project name="device/generic/x86" />
+  <remove-project name="device/generic/x86_64" />
 </manifest>
