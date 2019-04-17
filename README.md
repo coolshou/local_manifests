@@ -1,9 +1,10 @@
-## How to compile Android 7.1 for Pine A64
+## How to compile Android 7.1 for Pine A64 LTS
 0. Requirement
   ```
     HDD space: 110G
     openjdk 8: apt install openjdk-8-jdk-headless
     mcopy: apt install mtools
+    pigz: sudo apt install pigz
   ```
 
 1. get repo tool from https://storage.googleapis.com/git-repo-downloads/repo
@@ -66,9 +67,9 @@ export LC_ALL=C
   make  -j$(nproc --all)
   ```
 
-10. Create SD card image: (TODO: why disk full error?? vendor/ayufan-pine64/pine64-common/vendorsetup.sh)
+10. Create SD card image: (vendor/ayufan-pine64/pine64-common/vendorsetup.sh)
   ```
-  sdcard_image pine64_android_7_1.img.gz
+  sdcard_image pine64_android_7_1.img.gz sopine
   ```
 
 11. Write image to SD card with etcher.
