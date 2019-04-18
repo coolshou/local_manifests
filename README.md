@@ -71,16 +71,22 @@ export LC_ALL=C
   sdcard_image pine64_android_7_1.img.gz
   ```
 
-11. Write image to SD card with etcher.
+11. Write image to SD card with etcher. (direct write gz to SD card)
+
+*. clean all compiled file
+  ```
+  make clobber
+  ```
 
 ## disk format
   ```
- /dev/block/mmcblk0p1            43008   143359   100352   49M  6 FAT16                  /bootloader& kernel, ramdisk, recovery
- /dev/block/mmcblk0p2           143360  4337663  4194304    2G 83 Linux              /system
+ /dev/block/mmcblk0p1           43008   143359   100352   49M  6 FAT16           /bootloader & kernel, ramdisk, recovery
+ /dev/block/mmcblk0p2          143360  4337663  4194304    2G 83 Linux           /system
  /dev/block/mmcblk0p3         4337664  5910527  1572864  768M 83 Linux           /cache
  /dev/block/mmcblk0p4         5910528 62333951 56423424 26.9G 83 Linux           /data
   ```
-
+  
+  
 ## UART
 
 The successful connection is made on the EXP connector:
