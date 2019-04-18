@@ -1,9 +1,10 @@
-## How to compile Android 7.1 for Pine A64
+## How to compile Android 7.1 for Pine A64 LTS
 0. Requirement
   ```
     HDD space: 110G
-    openjdk 8: apt install openjdk-8-jdk-headless
-    mcopy: apt install mtools
+    openjdk 8: sudo apt install openjdk-8-jdk
+    mcopy: sudo apt install mtools
+    pigz: sudo apt install pigz
   ```
 
 1. get repo tool from https://storage.googleapis.com/git-repo-downloads/repo
@@ -15,8 +16,8 @@
   ```
 2. Create a new directory:
   ```
-  mkdir android
-  cd android
+  mkdir android-7.1
+  cd android-7.1
   ```
 
 3. Initialize manifests:
@@ -33,10 +34,10 @@
 5.  reduce jack server number to avoid out of memory issue (change setting need to restart jack server)
   ```
     > export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m"
-    > jack-admin kill-server
+    > ./prebuilts/sdk/tools/jack-admin kill-server
     # edit ~/.jack-server/config.properties
     # jack.server.max-service=1
-    > jack-admin start-server
+    > ./prebuilts/sdk/tools/jack-admin start-server
   ```
 5.1 multi user jack server (option)
     # edit ~/.jack-settings & ~/.jack-server/config.properties
@@ -52,7 +53,7 @@
   ```
 export LC_ALL=C
   ```
-  
+
 8. Setup device for compile:
   ```
   source build/envsetup.sh
@@ -66,12 +67,12 @@ export LC_ALL=C
   make  -j$(nproc --all)
   ```
 
-10. Create SD card image: (TODO: why disk full error?? vendor/ayufan-pine64/pine64-common/vendorsetup.sh)
+10. Create SD card image: (vendor/ayufan-pine64/pine64-common/vendorsetup.sh)
   ```
-  sdcard_image pine64_android_7_1.img.gz
+  sdcard_image pine64_android_7_1.img.gz sopine
   ```
 
-11. Write image to SD card with etcher. (direct write gz to SD card)
+11. Write image to SD card with  [etcher](https://www.balena.io/etcher/). (direct write gz to SD card)
 
 *. clean all compiled file
   ```
