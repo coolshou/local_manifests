@@ -2,8 +2,8 @@
 0. Requirement
   ```
     HDD space: 110G
-    openjdk 8: apt install openjdk-8-jdk
-    mcopy: apt install mtools
+    openjdk 8: sudo apt install openjdk-8-jdk
+    mcopy: sudo apt install mtools
     pigz: sudo apt install pigz
   ```
 
@@ -72,7 +72,7 @@ export LC_ALL=C
   sdcard_image pine64_android_7_1.img.gz sopine
   ```
 
-11. Write image to SD card with etcher.
+11. Write image to SD card with [etcher](https://www.balena.io/etcher/).
 
 ## disk format
   ```
