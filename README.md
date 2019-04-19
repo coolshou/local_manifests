@@ -32,16 +32,11 @@
   ```
 
 5.  reduce jack server number to avoid out of memory issue (change setting need to restart jack server)
-  ```
-    > export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m"
-    > ./prebuilts/sdk/tools/jack-admin kill-server
-    # edit ~/.jack-server/config.properties
-    # jack.server.max-service=1
-    > ./prebuilts/sdk/tools/jack-admin start-server
-  ```
-5.1 multi user jack server (option)
-    # edit ~/.jack-settings & ~/.jack-server/config.properties
-    # service port & admin port to same value
+
+```
+export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m"
+./prebuilts/sdk/tools/jack-admin kill-server
+```
 
 6. Bug fix: Remove duplicated WrappedAvoidBadWifiTracker class
   ```
@@ -75,19 +70,37 @@ export LC_ALL=C
 11. Write image to SD card with  [etcher](https://www.balena.io/etcher/). (direct write gz to SD card)
 
 *. clean all compiled file
+
   ```
   make clobber
   ```
 
+
+
+## Note:
+
+- Avoid jack out of memory issue:
+
+  edit ~/.jack-server/config.properties set 
+
+  jack.server.max-service=1
+
+- For multi user jack server
+
+  edit ~/.jack-settings & ~/.jack-server/config.properties set
+
+  service port & admin port to same value
+
 ## disk format
+
   ```
  /dev/block/mmcblk0p1           43008   143359   100352   49M  6 FAT16           /bootloader & kernel, ramdisk, recovery
  /dev/block/mmcblk0p2          143360  4337663  4194304    2G 83 Linux           /system
  /dev/block/mmcblk0p3         4337664  5910527  1572864  768M 83 Linux           /cache
  /dev/block/mmcblk0p4         5910528 62333951 56423424 26.9G 83 Linux           /data
   ```
-  
-  
+
+
 ## UART
 
 The successful connection is made on the EXP connector:
