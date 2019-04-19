@@ -39,9 +39,12 @@
     # jack.server.max-service=1
     > ./prebuilts/sdk/tools/jack-admin start-server
   ```
-5.1 multi user jack server (option)
-    # edit ~/.jack-settings & ~/.jack-server/config.properties
-    # service port & admin port to same value
+​	5.1 multi user jack server (option)
+
+- edit ~/.jack-settings & ~/.jack-server/config.properties
+- set  service port & admin port to same value
+
+
 
 6. Bug fix: Remove duplicated WrappedAvoidBadWifiTracker class
   ```
