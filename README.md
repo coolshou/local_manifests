@@ -50,12 +50,14 @@ export LC_ALL=C
   ```
 
 8. Setup device for compile:
-  ```
-  source build/envsetup.sh
-  # tulip_chihpd-eng: use for normal Android build with Launcher
-  # tulip_chiphd_atv-eng: use for Android TV build with Leanback Launcher
-  lunch tulip_chiphd-eng
-  ```
+
+```
+source build/envsetup.sh
+lunch tulip_chiphd-eng
+```
+
+- tulip_chihpd-eng: use for normal Android build with Launcher
+- tulip_chiphd_atv-eng: use for Android TV build with Leanback Launcher
 
 9. Compile sources:
   ```
